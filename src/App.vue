@@ -1,10 +1,24 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <Counter />
+  <button @click="addCounter">counter</button>
 </template>
+
+<script>
+import Counter from "./components/Counter.vue";
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    addCounter() {
+      this.$store.state.counter++;
+    },
+  },
+  components: {
+    Counter,
+  },
+};
+</script>
 
 <style>
 #app {
