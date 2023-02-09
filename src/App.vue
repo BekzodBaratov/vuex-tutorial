@@ -1,23 +1,24 @@
 <template>
-  <Counter />
-  <button @click="addCounter">counter</button>
+  <h1>{{ getCountercheck }}</h1>
+  <button @click="handleInc">counter</button>
+  <button @click="handleAsyncFunc">AsyncCounter</button>
 </template>
 
-<script>
-import Counter from "./components/Counter.vue";
-export default {
-  data() {
-    return {};
-  },
-  methods: {
-    addCounter() {
-      this.$store.state.counter++;
-    },
-  },
-  components: {
-    Counter,
-  },
-};
+<script setup>
+import { computed } from "vue";
+import { useStore, mapGetters } from "vuex";
+const store = useStore();
+
+const count = computed(function () {
+  return store.getters.getCountercheck;
+});
+
+function handleInc() {
+  store.commit("incriment", { value: 1 });
+}
+function handleAsyncFunc() {
+  store.dispatch("asyncIncrement", { value: 10 });
+}
 </script>
 
 <style>
