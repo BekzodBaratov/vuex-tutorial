@@ -1,12 +1,12 @@
 <template>
-  <h1>{{ getCountercheck }}</h1>
+  <h1>{{ count }}</h1>
   <button @click="handleInc">counter</button>
   <button @click="handleAsyncFunc">AsyncCounter</button>
 </template>
 
 <script setup>
 import { computed } from "vue";
-import { useStore, mapGetters } from "vuex";
+import { useStore } from "vuex";
 const store = useStore();
 
 const count = computed(function () {
