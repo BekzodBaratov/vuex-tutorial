@@ -1,5 +1,10 @@
 import { createStore } from "vuex";
 
+import actions from "./actions";
+import mutations from "./mutations";
+import cart from "./modules/cart";
+import product from "./modules/product";
+
 export default createStore({
   state: {
     counter: 0,
@@ -13,17 +18,9 @@ export default createStore({
       return state.counter * 2;
     },
   },
-  mutations: {
-    incriment(state, payload) {
-      state.counter += payload.value;
-    },
+
+  modules: {
+    actions,
+    mutations,
   },
-  actions: {
-    asyncIncrement(context, payload) {
-      setTimeout(function () {
-        context.commit("incriment", payload);
-      }, 1000);
-    },
-  },
-  modules: {},
 });
